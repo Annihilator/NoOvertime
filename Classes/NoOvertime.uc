@@ -1,3 +1,10 @@
+// No Overtime
+// Mutator for UT2004 by Annihilator
+// Reuses code from:
+// * End Game Mutator by SPDT
+// * SmartCTF by ravimohan1991
+// * UT2Vote by ProAsm
+
 #exec OBJ LOAD FILE=..\Sounds\AnnouncerMain.uax
 
 class NoOvertime extends Mutator;
@@ -18,6 +25,7 @@ function PostBeginPlay()
 function NOEndGame(PlayerController Admin, bool bForce)
 {
 	local Controller C;
+	local PlayerController P;
 	local name EndSound;
 	local Sound EndSoundSound;
 	local string sNick;
@@ -44,6 +52,8 @@ function NOEndGame(PlayerController Admin, bool bForce)
 				{
 					C.ClientGameEnded();
 					C.GameHasEnded();
+					P = PlayerController(C);
+					P.ClientPlaySound(EndSoundSound);
 				}
 		}
 		C = C.nextController;
@@ -51,8 +61,6 @@ function NOEndGame(PlayerController Admin, bool bForce)
 	}
 	Level.Game.TriggerEvent('EndGame',self,None);
 	Level.Game.EndLogging("Draw");
-	Level.Game.Broadcast(Instigator.Controller, "MATCH DRAW", 'CriticalEvent');
-	PlayerController(Instigator.Controller).ClientPlaySound(EndSoundSound);
 	BroadcastLocalizedMessage(class'NoOvertimeDrawMessage');
 	return;
 }

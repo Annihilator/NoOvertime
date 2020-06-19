@@ -15,7 +15,7 @@ static simulated function ClientReceive(PlayerController P, optional int Switch,
 defaultproperties
 {
 	Draw="MATCH DRAW"
-	Lifetime=5
+	Lifetime=10
 	PosY=0.500000
 	DrawColor=(B=10,R=0)
 	FontSize=1

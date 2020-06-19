@@ -1,3 +1,6 @@
 # No Overtime 
 Mutator for UT2004 by Annihilator  
-Reuses code from UT2Vote by ProAsm and the End Game Mutator by SPDT
+Reuses code from:
+* End Game Mutator by SPDT
+* SmartCTF by ravimohan1991
+* UT2Vote by ProAsm
